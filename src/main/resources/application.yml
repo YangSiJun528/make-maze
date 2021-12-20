@@ -16,3 +16,12 @@ logging.level:
 
 server:
   port: 8888
+
+sns:
+  google:
+    url: https://accounts.google.com/o/oauth2/v2/auth
+    client:
+      id: 132728480147-ctpsq5mg4eksbkc5d9u729ap67575j8l.apps.googleusercontent.com
+      secret: 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
+    callback:
+      url: http://localhost:8888/auth/google/callback
