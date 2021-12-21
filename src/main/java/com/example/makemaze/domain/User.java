@@ -18,10 +18,10 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "email")
-    private String email;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "google_id")
+    private String googleId;
+    @Column(name = "refresh_token")
+    private String refreshToken;
     @OneToMany(mappedBy = "user")
     List<Map> maps = new ArrayList<Map>();
 }
