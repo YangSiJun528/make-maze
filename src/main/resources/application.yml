@@ -25,3 +25,7 @@ sns:
       secret: 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
     callback:
       url: http://localhost:8888/auth/google/callback
+
+jwt:
+  issuer: s21011@gsm.hs.kr
+  secret: GSMHsKr1234567890

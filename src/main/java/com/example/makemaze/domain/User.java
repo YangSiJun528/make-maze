@@ -20,8 +20,8 @@ public class User {
     private Long id;
     @Column(name = "google_id")
     private String googleId;
-    @Column(name = "refresh_token")
-    private String refreshToken;
+    @Column(name = "email")
+    private String email;
     @OneToMany(mappedBy = "user")
     List<Map> maps = new ArrayList<Map>();
 }

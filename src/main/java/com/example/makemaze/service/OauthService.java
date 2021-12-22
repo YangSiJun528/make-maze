@@ -1,14 +1,19 @@
 package com.example.makemaze.service;
 
+import com.example.makemaze.dto.OAuthCallbackResponseDto;
 import com.example.makemaze.dto.RefreshingRequestDto;
 import com.example.makemaze.helper.constants.SocialLoginType;
 import com.example.makemaze.service.social.SocialOauth;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -41,5 +46,11 @@ public class OauthService {
     public String refreshAccessToken(SocialLoginType socialLoginType, String refreshingRequestDto) {
         SocialOauth socialOauth = this.findSocialOauthByType(socialLoginType);
         return socialOauth.refreshAccessToken(refreshingRequestDto);
+    }
+
+    public OAuthCallbackResponseDto callbackJsonToDto(String callbackJson) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        OAuthCallbackResponseDto oAuthCallbackResponseDto = objectMapper.readValue(callbackJson, OAuthCallbackResponseDto.class);
+        return oAuthCallbackResponseDto;
     }
 }
